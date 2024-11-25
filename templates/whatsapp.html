@@ -1,0 +1,23 @@
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="fr">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Envoyer un Message WhatsApp</title>
+     <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Lien vers votre fichier CSS -->
+ </head>
+ <body>
+     <div class="container">
+         <h1>Envoyer un Message WhatsApp</h1>
+         <form method="post" action="{% url 'envoyer_message' %}">
+             {% csrf_token %}
+             <label for="numero">Numéro WhatsApp:</label>
+             <input type="text" id="numero" name="numero" required>
+             <label for="message">Message:</label>
+             <textarea id="message" name="message" required></textarea>
+             <button type="submit">Envoyer Message</button>
+         </form>
+     </div>
+ </body>
+ </html>
