@@ -16,6 +16,7 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Email</th>
+                    <th>Date d'Inscription</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +24,9 @@
                 <tr>
                     <td>{{ etudiant.id }}</td>
                     <td>{{ etudiant.nom }}</td>
+                    <td>{{ etudiant.prenom }}</td>
                     <td>{{ etudiant.email }}</td>
+                    <td>{{ etudiant.date_inscription }}</td>
                 </tr>
                 {% empty %}
                 <tr>

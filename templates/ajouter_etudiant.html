@@ -17,6 +17,10 @@
                 <input type="text" id="nom" name="nom" required>
             </div>
             <div>
+                <label for="prenom">Prénom:</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
@@ -26,7 +30,7 @@
         </form>
         <a href="{% url 'Formapp:lister_etudiants' %}">Retourner à la liste des étudiants</a>
     </div>
-    <a href="{% url 'Formapp:envoyer_message' %}" class="whatsapp-icon">
+    <a href="https://wa.me/+25768109200?text=I'm%20interested%20in%20your%20car%20for%20sale" class="whatsapp-icon">
         <img src="{% static 'images/whatsapp-icon.png' %}" alt="Envoyer un message sur WhatsApp" width="50">
     </a>
     

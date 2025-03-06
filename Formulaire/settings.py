@@ -18,8 +18,9 @@ from firebase_admin import credentials, firestore
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-cred = credentials.Certificate('C:/Users/HP/Downloads/basecontact-6f46f-firebase-adminsdk-pkmrk-626259c304.json')
+cred = credentials.Certificate(os.path.join(BASE_DIR,"C:/Users/HP/Documents/DJANGO/Formulaire/etudiants-2fa4a-firebase-adminsdk-fbsvc-9f11b4f49e.json"))
 firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
 
@@ -129,9 +130,7 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR , 'media'
-TWILIO_ACCOUNT_SID = 'ACb4e527e02656a906139af94ed8da2e4d'
-TWILIO_AUTH_TOKEN = '5fe7b1950cc89b116a77f95cf09c2142'
-TWILIO_WHATSAPP_NUMBER = 'whatsapp:+14155238886'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
