@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import AjouterEtudiant, ListerEtudiants, EnvoyerMessage, success_page
+from .views import AjouterEtudiant, ListerEtudiants, EnvoyerMessage, success_page, weather_view
+
 
 app_name = "Formapp"
 urlpatterns = [
@@ -8,5 +9,7 @@ urlpatterns = [
     path('success/', success_page, name='success_page'),
     path('lister/', ListerEtudiants.as_view(), name='lister_etudiants'), 
     path('envoyer-message/', EnvoyerMessage.as_view(), name='envoyer_message'),
+    path('weather/', weather_view, name='weather'),
+    
      
 ]

@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 from .forms import EtudiantForm
 from django.http import JsonResponse
 from firebase_admin import firestore
-
+import requests
+from django.conf import settings
 
 db = firestore.client()
 class AjouterEtudiant(View):
@@ -67,6 +68,20 @@ class EnvoyerMessage(View):
 def afficher_etudiants(request):
     etudiants = db.collection('contact').stream()
     etudiant_list = [{"id": doc.id, **doc.to_dict()} for doc in etudiants]
-    return render(request, 'lister_etudiants.html', {'etudiants': etudiant_list})        
+    return render(request, 'lister_etudiants.html', {'etudiants': etudiant_list})   
+
+def weather_view(request):
+    weather_data = {}
+    city = request.GET.get('city', 'Paris')  # Ville par défaut
+
+    if city:
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={settings.WEATHER_API_KEY}&units=metric"
+        response = requests.get(url)
+        weather_data = response.json()
+    
+    context = {
+        'weather': weather_data,
+    }
+    return render(request, 'weather.html', context)     
 
 

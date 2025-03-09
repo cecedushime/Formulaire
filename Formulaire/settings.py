@@ -21,6 +21,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 cred = credentials.Certificate(os.path.join(BASE_DIR,"C:/Users/HP/Documents/DJANGO/Formulaire/etudiants-2fa4a-firebase-adminsdk-fbsvc-9f11b4f49e.json"))
 firebase_admin.initialize_app(cred)
 
+WEATHER_API_KEY = '8dca79eae0fe22057cf8fd034e590b63'
+
 db = firestore.client()
 
 

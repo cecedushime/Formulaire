@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo</title>
+    <link rel="stylesheet" href="{% static 'css/weather.css' %}"> 
+</head>
+<body>
+    <h1>Météo</h1>
+    <form method="get">
+        <input type="text" name="city" placeholder="Entrez une ville">
+        <button type="submit">Rechercher</button>
+    </form>
+    {% if weather.cod == 200 %}
+        <h2>{{ weather.name }}</h2>
+        <p>Température: {{ weather.main.temp }} °C</p>
+        <p>Condition: {{ weather.weather.0.description }}</p>
+    {% elif weather.cod != 200 %}
+        <p>Ville non trouvée. Veuillez réessayer.</p>
+    {% endif %}
+</body>
+</html>

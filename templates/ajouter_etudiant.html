@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter Étudiant</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+    <style>
+        .weather-container {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .whatsapp-icon {
+            position: fixed; 
+            bottom: 20px;
+            right: 20px; 
+            z-index: 1000; 
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,11 +40,29 @@
                 <input type="email" id="email" name="email" required>
             </div>
             <div>
-                <button type="submit">Add Student</button>
+                <button type="submit">Ajouter Étudiant</button>
             </div>
         </form>
         <a href="{% url 'Formapp:lister_etudiants' %}">Retourner à la liste des étudiants</a>
+        
+        
+        <div class="weather-container">
+            <h2>Météo</h2>
+            <form method="get" action="{% url 'Formapp:weather' %}">
+                <label for="city">Entrez une ville :</label>
+                <input type="text" name="city" placeholder="Ex: Paris" required>
+                <button type="submit">Rechercher</button>
+            </form>
+            {% if weather.cod == 200 %}
+                <h3>{{ weather.name }}</h3>
+                <p>Température: {{ weather.main.temp }} °C</p>
+                <p>Condition: {{ weather.weather.0.description }}</p>
+            {% elif weather.cod != 200 %}
+                
+            {% endif %}
+        </div>
     </div>
+
     <a href="https://wa.me/+25768109200?text=I'm%20interested%20in%20your%20car%20for%20sale" class="whatsapp-icon">
         <img src="{% static 'images/whatsapp-icon.png' %}" alt="Envoyer un message sur WhatsApp" width="50">
     </a>
